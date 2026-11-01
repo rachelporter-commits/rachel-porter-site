@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+const { title = "Rachel Porter | The Special-Needs Family Realtor | Central Virginia", description = "Rachel Porter, REALTOR® with Keeton & Co, helps special-needs families in Central Virginia find homes that truly fit — accessibility, sensory comfort, schools and therapy nearby." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title><meta name="description" content={description} />
+  <link rel="icon" href="/images/favicon.png" />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+  <meta property="og:image" content="/images/rachel-porter-headshot.jpg" />
+</head>
+<body class="font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-3 focus:bg-white">Skip to content</a>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@theme {
+  --color-cream: #fbf7f1;
+  --color-sage: #6f8f7a;
+  --color-sage-dark: #4c6a57;
+  --color-clay: #c9785a;
+  --color-ink: #2d2a26;
+  --font-serif: "Georgia", "Iowan Old Style", serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--color-cream); color: var(--color-ink); }
+:focus-visible { outline: 3px solid var(--color-clay); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
