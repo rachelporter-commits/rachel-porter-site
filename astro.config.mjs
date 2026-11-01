@@ -1,11 +1,16 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
+import { loadEnv } from "vite";
 
-import tailwindcss from '@tailwindcss/vite';
+const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
+const site = (env.PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL || "https://rachel-porter-site.pages.dev").replace(/\/$/, "");
 
-// https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  site,
+  trailingSlash: "ignore",
+  integrations: [mdx(), sitemap({ filter: (p) => !p.includes("/admin") })],
+  vite: { plugins: [tailwindcss()] },
 });

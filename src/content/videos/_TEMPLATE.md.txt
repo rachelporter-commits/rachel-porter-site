@@ -1,0 +1,8 @@
+---
+title: "Video title"
+description: "What the video is about (shows on the page and in search)."
+url: "https://www.youtube.com/watch?v=XXXXXXXXXXX"  # or Vimeo, Facebook, TikTok link, or /videos/my-clip.mp4
+pubDate: 2026-11-15
+tags: ["home tour"]
+draft: false
+---

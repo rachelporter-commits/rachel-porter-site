@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import { getVideos, fmt } from "../../lib/posts";
+import { videoSchema } from "../../lib/schema";
+const vids = await getVideos();
+---
+<Layout title="Videos | Rachel Porter, The Special-Needs Family Realtor" description="Home tours, tips, and stories for special-needs families in Central Virginia." schema={vids.map((v) => videoSchema(v.data))}>
+  <section class="max-w-5xl mx-auto px-5 py-16">
+    <h1 class="font-serif text-4xl md:text-5xl font-bold text-center">Videos</h1>
+    <p class="text-center mt-3 text-ink/70 mb-10">Home tours, tips, and real talk for special-needs families.</p>
+    {vids.length === 0 ? <p class="text-center text-ink/60">Videos coming soon.</p> : (
+    <ul class="grid md:grid-cols-2 gap-8">
+      {vids.map((v) => (
+        <li id={v.id}><article class="rounded-2xl bg-white p-5 border border-black/5 shadow-sm">
+          <VideoEmbed url={v.data.url} title={v.data.title} />
+          <h2 class="font-serif text-xl font-bold">{v.data.title}{v.data.draft && <span class="ml-2 text-xs rounded bg-clay/20 px-2 text-clay">DRAFT</span>}</h2>
+          <p class="text-sm text-ink/60"><time datetime={v.data.pubDate.toISOString()}>{fmt(v.data.pubDate)}</time></p>
+          <p class="mt-2 text-ink/80">{v.data.description}</p>
+        </article></li>))}
+    </ul>)}
+  </section>
+</Layout>

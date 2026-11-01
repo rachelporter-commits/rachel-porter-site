@@ -1,0 +1,18 @@
+---
+title: "Your post title"
+description: "One or two sentences. This shows in Google, AI search, and the blog list."
+pubDate: 2026-11-15
+tags: ["buying", "accessibility"]
+# heroImage: "/images/uploads/my-photo.jpg"
+# heroAlt: "Describe the photo for screen readers"
+# video: "https://youtu.be/XXXXXXXXXXX"
+draft: false
+---
+
+Write here. Use ## for headings.
+
+To put a video in the middle of a post, rename the file to .mdx and add:
+
+import VideoEmbed from "../../components/VideoEmbed.astro";
+
+<VideoEmbed url="https://youtu.be/XXXXXXXXXXX" title="Describe the video" />

@@ -1,0 +1,15 @@
+---
+import { fmt, slugify } from "../lib/posts";
+const { posts } = Astro.props;
+---
+{posts.length === 0 ? <p class="text-center text-ink/60">New posts coming soon.</p> : (
+<ul class="grid md:grid-cols-2 gap-6">
+  {posts.map((p: any) => (
+    <li><article class="h-full rounded-2xl bg-white p-6 border border-black/5 shadow-sm">
+      {p.data.heroImage && <img src={p.data.heroImage} alt={p.data.heroAlt ?? ""} loading="lazy" class="rounded-xl mb-4 aspect-video object-cover w-full" />}
+      <p class="text-sm text-ink/60"><time datetime={p.data.pubDate.toISOString()}>{fmt(p.data.pubDate)}</time>{p.data.draft && <span class="ml-2 rounded bg-clay/20 px-2 text-clay font-semibold">DRAFT</span>}</p>
+      <h2 class="font-serif text-2xl font-bold mt-1"><a href={`/blog/${p.id}/`} class="hover:text-clay">{p.data.title}</a></h2>
+      <p class="mt-2 text-ink/80">{p.data.description}</p>
+      <p class="mt-3 flex flex-wrap gap-2">{p.data.tags.map((t: string) => <a href={`/blog/tag/${slugify(t)}/`} class="text-xs rounded-full bg-sage/15 text-sage-dark px-3 py-1">#{t}</a>)}</p>
+    </article></li>))}
+</ul>)}

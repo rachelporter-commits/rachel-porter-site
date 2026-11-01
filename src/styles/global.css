@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @theme {
   --color-cream: #fbf7f1;
   --color-sage: #6f8f7a;

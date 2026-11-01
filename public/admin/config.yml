@@ -1,0 +1,46 @@
+# Decap CMS: browser editor at /admin. Every save = a commit to GitHub = Cloudflare redeploys (~1 min).
+backend:
+  name: github
+  repo: RACHEL_GITHUB_USERNAME/rachel-porter-site   # <-- set to the real repo
+  branch: main
+  base_url: https://rachel-porter-site.pages.dev     # <-- your live site URL (OAuth runs on Cloudflare, see /functions/api)
+  auth_endpoint: api/auth
+site_url: https://rachel-porter-site.pages.dev
+media_folder: public/images/uploads
+public_folder: /images/uploads
+publish_mode: simple
+collections:
+  - name: blog
+    label: Blog posts
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    sortable_fields: [pubDate, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: "Short description (shows in Google/AI search)", name: description, widget: text }
+      - { label: Publish date, name: pubDate, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Main photo, name: heroImage, widget: image, required: false }
+      - { label: Photo description (for screen readers), name: heroAlt, widget: string, required: false }
+      - { label: "Video link (optional, YouTube/Vimeo/Facebook/TikTok)", name: video, widget: string, required: false }
+      - { label: "Draft (hide from site)", name: draft, widget: boolean, default: false }
+      - { label: Post, name: body, widget: markdown }
+  - name: videos
+    label: Videos
+    folder: src/content/videos
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: "Video link (YouTube, Vimeo, Facebook, TikTok) or /videos/file.mp4", name: url, widget: string }
+      - { label: "OR upload an mp4 (then paste its path above)", name: upload, widget: file, required: false, media_folder: /public/videos, public_folder: /videos }
+      - { label: Publish date, name: pubDate, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Thumbnail image (optional), name: thumbnail, widget: image, required: false }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: "Draft (hide from site)", name: draft, widget: boolean, default: false }

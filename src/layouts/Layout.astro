@@ -1,18 +1,48 @@
 ---
 import "../styles/global.css";
-const { title = "Rachel Porter | The Special-Needs Family Realtor | Central Virginia", description = "Rachel Porter, REALTOR® with Keeton & Co, helps special-needs families in Central Virginia find homes that truly fit — accessibility, sensory comfort, schools and therapy nearby." } = Astro.props;
+import { agent, SITE_URL } from "../data/site";
+import { graph, person, agentBiz, brokerage } from "../lib/schema";
+interface Props { title?: string; description?: string; image?: string; type?: string; schema?: object[]; }
+const { title = "Rachel Porter | The Special-Needs Family Realtor | Richmond & Central Virginia",
+  description = "Rachel Porter, REALTOR® with Keeton & Co, helps special-needs families in Richmond and Central Virginia find homes that truly fit: accessibility, sensory comfort, and schools and therapy nearby.",
+  image = "/images/rachel-porter-headshot.jpg", type = "website", schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL + "/").href;
+const img = image.startsWith("http") ? image : SITE_URL + image;
+const nav = [["/#about", "About"], ["/#services", "Services"], ["/blog/", "Blog"], ["/videos/", "Videos"], ["/#faq", "FAQ"], ["/#contact", "Contact"]];
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title><meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" href="/images/favicon.png" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Rachel Porter blog" href="/rss.xml" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta property="og:type" content={type} /><meta property="og:site_name" content="Rachel Porter, REALTOR®" />
   <meta property="og:title" content={title} /><meta property="og:description" content={description} />
-  <meta property="og:image" content="/images/rachel-porter-headshot.jpg" />
+  <meta property="og:url" content={canonical} /><meta property="og:image" content={img} />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} /><meta name="twitter:image" content={img} />
+  <script type="application/ld+json" set:html={graph(person, agentBiz, brokerage, ...schema)} />
 </head>
 <body class="font-sans antialiased">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-3 focus:bg-white">Skip to content</a>
-  <slot />
+  <header class="sticky top-0 z-10 bg-cream/90 backdrop-blur border-b border-black/5">
+    <nav aria-label="Main" class="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
+      <a href="/" class="font-serif text-xl font-bold text-sage-dark">Rachel Porter</a>
+      <ul class="hidden md:flex gap-6 text-sm">{nav.map(([h, l]) => <li><a href={h} class="hover:text-clay">{l}</a></li>)}</ul>
+      <a href="/#contact" class="rounded-full bg-clay text-white px-4 py-2 text-sm font-semibold hover:opacity-90">Let's talk</a>
+    </nav>
+  </header>
+  <main id="main"><slot /></main>
+  <footer class="py-10 text-center text-sm text-ink/60 px-5 border-t border-black/5">
+    <img src="/images/keeton-logo.png" alt="Keeton & Co Real Estate" class="h-10 mx-auto mb-3" loading="lazy" />
+    <p>{agent.name}, REALTOR® · Cell <a class="underline" href="tel:8046299192">{agent.phone}</a> · VA License #{agent.licenseVA}</p>
+    <p class="mt-1">{agent.office}</p>
+    <p class="mt-1">Equal Housing Opportunity. Brokered by <a class="underline" href={agent.brokerageUrl}>Keeton & Co Real Estate</a>.</p>
+    <p class="mt-2"><a class="underline" href="/blog/">Blog</a> · <a class="underline" href="/videos/">Videos</a> · <a class="underline" href="/rss.xml">RSS</a></p>
+  </footer>
 </body>
 </html>
