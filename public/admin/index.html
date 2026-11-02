@@ -1,5 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex" /><title>Rachel's Site Editor</title>
-<script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script></head>
-<body></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Rachel's Site Editor</title>
+</head>
+<body>
+  <!-- Decap CMS must load inside <body>: it mounts onto document.body, which is null if loaded from <head>. -->
+  <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+</body>
+</html>
