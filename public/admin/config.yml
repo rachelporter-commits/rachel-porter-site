@@ -1,11 +1,11 @@
 # Decap CMS: browser editor at /admin. Every save = a commit to GitHub = Cloudflare redeploys (~1 min).
 backend:
   name: github
-  repo: RACHEL_GITHUB_USERNAME/rachel-porter-site   # <-- set to the real repo
+  repo: rachel-porter-realtor/rachel-porter-site   # <-- set to the real repo
   branch: main
-  base_url: https://rachel-porter-site.pages.dev     # <-- your live site URL (OAuth runs on Cloudflare, see /functions/api)
+  base_url: https://rachelporterrealty.com     # <-- your live site URL (OAuth runs on Cloudflare, see /functions/api)
   auth_endpoint: api/auth
-site_url: https://rachel-porter-site.pages.dev
+site_url: https://rachelporterrealty.com
 media_folder: public/images/uploads
 public_folder: /images/uploads
 publish_mode: simple

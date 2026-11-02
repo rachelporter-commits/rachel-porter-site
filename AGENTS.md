@@ -22,7 +22,7 @@ Owner of this repo: Rachel. Broker of record: Daniel Keeton, Keeton & Co (keeton
 ## AI search / SEO (keep these working)
 - JSON-LD from `src/lib/schema.ts`, injected by `layouts/Layout.astro` (`schema` prop for page-specific nodes: FAQPage, BlogPosting, VideoObject).
 - `robots.txt.ts` allows AI crawlers; `llms.txt.ts` auto-summarizes the site; `@astrojs/sitemap`; `rss.xml.ts`.
-- Site URL from `PUBLIC_SITE_URL` (default https://rachel-porter-site.pages.dev). Every new page should use Layout with a unique title and description, a single h1, and real content.
+- Site URL from `PUBLIC_SITE_URL` (default https://rachelporterrealty.com). Every new page should use Layout with a unique title and description, a single h1, and real content.
 - FAQ answers must stay factual and general. No invented statistics or legal or medical advice; point people to agencies or professionals.
 
 ## Rules

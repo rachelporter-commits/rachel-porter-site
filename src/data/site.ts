@@ -9,6 +9,8 @@ export const agent = {
   email: "rachel.porter@keetonco.com",
   phone: "(804) 629-9192", // cell, confirmed by Daniel Keeton 2026-11-01
   firmPhone: "(804) 556-1228",
+  mobileAlt: "(804) 597-9047", // also in her email signature; cell above stays primary
+  domain: "rachelporterrealty.com",
   office: "Keeton & Co Real Estate, 4235 Innslake Dr, Ste 105, Glen Allen, VA 23060",
   brokerage: "Keeton & Co Real Estate",
   brokerageUrl: "https://keetonco.com",
@@ -27,7 +29,7 @@ export const stats = {
   avgPrice2026: 470_092,
 };
 
-export const SITE_URL = (import.meta.env.PUBLIC_SITE_URL || "https://rachel-porter-site.pages.dev").replace(/\/$/, "");
+export const SITE_URL = (import.meta.env.PUBLIC_SITE_URL || "https://rachelporterrealty.com").replace(/\/$/, "");
 
 // FAQ: general, non-statistical guidance. Edit freely; shown on home page + FAQPage schema.
 export const faqs: { q: string; a: string }[] = [

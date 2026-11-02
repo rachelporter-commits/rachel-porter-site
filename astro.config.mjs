@@ -6,7 +6,7 @@ import mdx from "@astrojs/mdx";
 import { loadEnv } from "vite";
 
 const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
-const site = (env.PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL || "https://rachel-porter-site.pages.dev").replace(/\/$/, "");
+const site = (env.PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL || "https://rachelporterrealty.com").replace(/\/$/, "");
 
 export default defineConfig({
   site,
