@@ -1,7 +1,7 @@
 # Handoff: getting the site live (Rachel's accounts)
 
 ## 1. GitHub
-Accept the repository transfer from `keetonassistant` (link in your email / github.com/notifications). The repo becomes `rachel-porter-realtor/rachel-porter-site`.
+Accept the repository transfer from `keetonassistant` (link in your email / github.com/notifications). The repo becomes `rachelporter-commits/rachel-porter-site`.
 
 ## 2. Supabase (your account)
 1. New project (region US East), save the DB password.
